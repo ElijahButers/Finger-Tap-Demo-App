@@ -11,6 +11,14 @@ import Foundation
 
 
 class InterfaceController: WKInterfaceController {
+    
+    // Outlets
+    @IBOutlet var leftTimeLabel: WKInterfaceLabel!
+    @IBOutlet var buttonTap: WKInterfaceButton!
+    @IBOutlet var startButton: WKInterfaceButton!
+    @IBOutlet var bestScoreLabel: WKInterfaceLabel!
+    
+    
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -26,6 +34,17 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+    }
+    
+    // Actions
+    
+    @IBAction func buttonTapped() {
+    }
+    
+    @IBAction func startTapped() {
+    }
+    
+    @IBAction func resetTapped() {
     }
 
 }
