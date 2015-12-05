@@ -47,8 +47,8 @@
                     <connections>
                         <outlet property="bestScoreLabel" destination="aHb-O4-Axv" id="Pgh-yN-RsB"/>
                         <outlet property="buttonTap" destination="9Bt-h3-9C0" id="loc-Uf-bQz"/>
-                        <outlet property="leftTimeLabel" destination="WDX-NF-WSw" id="EvB-AC-L99"/>
                         <outlet property="startButton" destination="jZX-Df-UrT" id="N9s-fQ-0rd"/>
+                        <outlet property="timeLeftLabel" destination="WDX-NF-WSw" id="Aeu-Sw-oZ0"/>
                     </connections>
                 </controller>
             </objects>
