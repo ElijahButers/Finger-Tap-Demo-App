@@ -9,6 +9,7 @@
 import WatchKit
 import Foundation
 
+var kBestScore = 0
 
 class InterfaceController: WKInterfaceController {
     
@@ -21,12 +22,14 @@ class InterfaceController: WKInterfaceController {
     var timer = NSTimer()
     var count = 10
     var tapCount = 0
+    let defaults = NSUserDefaults()
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
         self.buttonTap.setEnabled(false)
+        getBestScore()
     }
 
     override func willActivate() {
@@ -43,6 +46,7 @@ class InterfaceController: WKInterfaceController {
     @IBAction func buttonTapped() {
         tapCount += 1
         self.buttonTap.setTitle("\(tapCount)")
+        getBestScore()
     }
     
     @IBAction func startTapped() {
@@ -81,6 +85,25 @@ class InterfaceController: WKInterfaceController {
             self.timeLeftLabel.setText("\(count) sec")
         }
         
+    }
+    
+    func getBestScore() {
+        
+        if defaults.objectForKey("kBestScore") == nil {
+            let zero = 0
+            defaults.setObject(zero, forKey: "kBestScore")
+            defaults.synchronize()
+        } else {
+            let score: Int = defaults.objectForKey("kBestScore") as! Int
+            
+            if tapCount > score {
+                defaults.setObject(tapCount, forKey: "kBestScore")
+                defaults.synchronize()
+                self.bestScoreLabel.setText("Best score: \(tapCount)")
+            } else {
+                self.bestScoreLabel.setText("BestScore: \(score)")
+            }
+        }
     }
 
 }
